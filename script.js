@@ -1,29 +1,6 @@
-var gifButtons = ["Tiger Woods", "LeBron James", "Owen Wilson", "Will Ferrell", "Will Smith", "Emma Stone", "Tom Cruise", "Oprah", "Ellen Degeneres"]
+var gifButtons = ["Tiger Woods", "LeBron James", "Owen Wilson", "Will Ferrell", "Will Smith", "Emma Stone", "Tom Cruise", "Oprah", "Ellen Degeneres", "Cam Newton", "Christian Pulisic", "Aaron Rodgers"]
 var searchInput;
 
-$(".gif").on("click", function() {
-  
-  var state = $(this).attr("data-state")
-
-  var animateUrl = response.data[i].images.fixed_height.url;
-  var stillUrl = response.data[i].images.fixed_height_still.url;
-
-    //if the state is equal to still...
-  if (state === "still"){
-      //changes the src attribute of the img tag to the animateGif value (data-animate)
-      $(this).attr("src", animateUrl)
-      //changes the data-state value from "still" to "animate"
-      $(this).attr("data-state", "animate")
-    //if the state is equal to animate...
-  }else if(state === "animate"){
-      //changes the src attribute of the image tag to the stillGif value (data-still)
-      $(this).attr("src", stillUrl)
-      //changes the data-state value to "still"
-      $(this).attr("data-state", "still")
-  }
-
-  
-});
 function gifResults() {
   
     var url = "https://api.giphy.com/v1/gifs/search?api_key=X2W6v0C6HbbMrBAkzhdpbivMQsaNbpVo&q=" + searchInput + "&limit=10&offset=0&rating=PG-13&lang=en"
@@ -35,15 +12,25 @@ function gifResults() {
     }).then(function (response) {
       $("#results").empty();
       for(var i=0; i<response.data.length; i++){
+        
         console.log(response.data);
         console.log(response.data[i].images.fixed_height.url);
+
         var ratingP = $("<p>").text("Rating: " + response.data[i].rating);
-        var imageUrl = response.data[i].images.fixed_height.url;
+        // var imageUrl = response.data[i].images.fixed_height.url;
         var gif = $("<img>");
-        gif.attr("src", imageUrl);
+        var animateUrl = response.data[i].images.fixed_height.url;
+        var stillUrl = response.data[i].images.fixed_height_still.url;
+
+        gif.attr("src", stillUrl);
+        gif.attr("data-state", "still")
+        gif.attr("data-animate", animateUrl)
+        gif.attr("data-still", stillUrl)
+        gif.addClass("gif")
+
+
         $("#results").append(gif);
         $("#results").append(ratingP);
-    
 
     }
     
@@ -88,3 +75,19 @@ $(document).on("click", ".gif-btn", function(event){
 });
 
 renderButtons();
+
+$(document).on("click", ".gif", function() {
+
+  console.log("this works!");
+
+  var state = $(this).attr("data-state");
+
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+
+});
