@@ -1,4 +1,4 @@
-var gifButtons = ["Tiger Woods", "LeBron James", "Owen Wilson", "Will Ferrell", "Will Smith", "Emma Stone", "Tom Cruise", "Oprah", "Ellen Degeneres", "Cam Newton", "Christian Pulisic", "Aaron Rodgers"]
+var gifButtons = ["Tiger Woods", "LeBron James", "Owen Wilson", "Will Ferrell", "Will Smith", "Emma Stone", "Tom Cruise", "Oprah", "Ellen Degeneres", "Cam Newton", "Christian Pulisic", "Aaron Rodgers"]``
 var searchInput;
 
 function gifResults() {
