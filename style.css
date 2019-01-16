@@ -8,3 +8,75 @@ margin: 10px;
 img{
     margin  : 10px;
 }
+#lead {
+    text-align: center;
+    font-size: 24px;
+}
+
+body {
+    background-image: url("assets/extra_clean_paper.png");
+        background-repeat: repeat;
+}
+.headerDiv {
+        /* NEED TO FIX THE REPEAT FOR THE IMAGE */
+        background-image: url("assets/extra_clean_paper.png");
+        background-repeat: repeat;
+}
+.header { 
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 700;
+}
+
+.rainbow {
+  
+    /* Font options */
+   font-family: "Comic Sans MS", cursive;
+   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+   font-size:80px;
+   
+    /* Chrome, Safari, Opera */
+   -webkit-animation: rainbow 3s infinite; 
+   
+   /* Internet Explorer */
+   -ms-animation: rainbow 3s infinite;
+   
+   /* Standar Syntax */
+   animation: rainbow 3s infinite; 
+ }
+ 
+ /* Chrome, Safari, Opera */
+ @-webkit-keyframes rainbow{
+   0%{color: orange;}	
+   10%{color: purple;}	
+     20%{color: red;}
+   30%{color: CadetBlue;}
+     40%{color: yellow;}
+   50%{color: coral;}
+     60%{color: green;}
+   70%{color: cyan;}
+   80%{color: DeepPink;}
+   90%{color: DodgerBlue;}
+     100%{color: orange;}
+ }
+ 
+ /* Internet Explorer */
+ @-ms-keyframes rainbow{
+   0%{color: orange;}	
+   10%{color: purple;}	
+     20%{color: red;}
+     40%{color: yellow;}
+     60%{color: green;}
+     100%{color: orange;}
+ }
+ 
+ /* Standar Syntax */
+ @keyframes rainbow{
+   0%{color: orange;}	
+   10%{color: purple;}	
+     20%{color: red;}
+     40%{color: yellow;}
+     60%{color: green;}
+     100%{color: orange;}
+ }
+ 

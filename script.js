@@ -17,7 +17,6 @@ function gifResults() {
         console.log(response.data[i].images.fixed_height.url);
 
         var ratingP = $("<p>").text("Rating: " + response.data[i].rating);
-        // var imageUrl = response.data[i].images.fixed_height.url;
         var gif = $("<img>");
         var animateUrl = response.data[i].images.fixed_height.url;
         var stillUrl = response.data[i].images.fixed_height_still.url;
@@ -28,12 +27,10 @@ function gifResults() {
         gif.attr("data-still", stillUrl)
         gif.addClass("gif")
 
-
+        //appends gifs to page
         $("#results").append(gif);
         $("#results").append(ratingP);
-
     }
-    
   }); 
 };
 
@@ -43,11 +40,9 @@ function renderButtons() {
 
     for (var i = 0; i < gifButtons.length; i++) {
         var a = $("<button>");
-
         a.addClass("gif-btn");
         a.attr("data-name", gifButtons[i]);
         a.text(gifButtons[i]);
-
         $("#buttons-view").append(a);
     }
 }
@@ -55,9 +50,9 @@ function renderButtons() {
 $("#submit").on("click", function (event) {
     event.preventDefault();  
     searchInput = $("#search").val();
-    // gifButtons.push(searchInput);
     renderButtons();
     gifResults();
+    $("#search").val("")
 
 });
 
@@ -73,9 +68,11 @@ $(document).on("click", ".gif-btn", function(event){
     gifResults();
 
 });
-
+// renders buttons on page load
 renderButtons();
 
+
+// Click function for starting and stopping/resetting Gifs
 $(document).on("click", ".gif", function() {
 
   console.log("this works!");
